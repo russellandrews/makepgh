@@ -1,0 +1,35 @@
+<header class="spot-color border-bottom">
+	<div class="notice"><%= notice%></div>
+	<nav>   
+		<a href="#" class="logout">Menu</a>
+		<%= link_to image_tag("/assets/logo2.png"), :home %>
+		<%= link_to 'Discussion', topics_path, :class => "menu" %>
+	</nav>
+</header>
+
+<div class="menu-overlay spot-color" id="menu"></div>
+
+<div class="menu-popover-container">
+	<div id="menu" class="menu-popover">
+		<h2>This is the menu</h2>
+		<nav>
+			<ul>
+				<li><%= link_to 'Home', :home %></li>
+				<li><%= link_to 'Residents', :residents %></li>
+				<li><%= link_to 'Discussion Board', topics_path %></li>
+				<% if current_user %>
+				<li><%= link_to 'My Profile', user_path(current_user.username) %></li>
+				<li><%= link_to 'Edit Profile', edit_user_path(current_user.username) %></li>
+				<li><%= link_to "Logout", :logout%></li>
+				<% else %>
+				<li><%= link_to "Register", new_user_path%></li>
+				<li><%= link_to "Login", :login %></li>
+				<% end %>
+				<div class="clear"></div>
+			</ul>
+		</nav>
+
+	<div class="close"></div>
+
+	</div>
+</div>

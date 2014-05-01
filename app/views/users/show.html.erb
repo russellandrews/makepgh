@@ -1,0 +1,183 @@
+<script type="text/javascript">
+	function adjustBar(){
+  		var causePercent = Number("<%= @user.cause_percent %>");
+  		var backgroundWidth2 = $("#barBackground2").width();
+
+  		var backgroundWidth = $("#barBackground").width();
+
+  		var barWidth2 = causePercent*backgroundWidth2/100;
+
+  		var barWidth = causePercent*backgroundWidth/100;
+
+  		$("#bar2").width(barWidth2);
+
+  		$("#bar").width(barWidth);
+
+  		$("input#slide").value = causePercent;
+
+  	}
+
+  	function changeSpotColor(){
+			
+		var neighborhood = "<%= @user.neighborhood.to_s %>";
+
+		if ( neighborhood  === "Lawrenceville"){
+			$(".word-color").css("color", "#c35838");
+			$("#bar2.word-color").css("background", "#c35838");
+		} else if (neighborhood  === "Southside"){
+			$(".word-color").css("color", "#e0ae27");
+			$("#bar2.word-color, section.banner").css("background", "#67a691");
+		} else if (neighborhood  === "Oakland"){
+			$(".word-color").css("color", "#1c2e3d");
+			$("#bar2.word-color").css("background", "#1c2e3d");
+		} else if (neighborhood  === "Downtown"){
+			$(".word-color").css("color", "#c35838");
+			$("#bar2.word-color").css("background", "#c35838");
+		} else if (neighborhood  === "Shadyside"){
+			$(".word-color").css("color", "#67a691");
+			$("#bar2.word-color").css("background", "#67a691");
+		} else if (neighborhood  === "Homewood"){
+			$(".word-color").css("color", "#1c2e3d");
+			$("#bar2.word-color").css("background", "#1c2e3d");
+		} else if (neighborhood  === "Hazelwood"){
+			$(".word-color").css("color", "#c35838");
+			$("#bar2.word-color").css("background", "#c35838");
+		} else if (neighborhood  === "The Hill"){
+			$(".word-color").css("color", "#e0ae27");
+			$("#bar2.word-color, section.banner").css("background", "#67a691");
+		} else if (neighborhood  === "Squirrel Hill"){
+			$(".word-color").css("color", "#1c2e3d");
+			$("#bar2.word-color").css("background", "#1c2e3d");
+		} else if (neighborhood  === "East Liberty"){
+			$(".word-color").css("color", "#c35838");
+			$("#bar2.word-color").css("background", "#c35838");
+		} else if (neighborhood  === "Friendship"){
+			$(".word-color").css("color", "#e0ae27");
+			$("#bar2.word-color, section.banner").css("background", "#67a691");
+		} else if (neighborhood  === "Garfield"){
+			$(".word-color").css("color", "#1c2e3d");
+			$("#bar2.word-color").css("background", "#1c2e3d");
+		} else if (neighborhood  === "Bloomfield"){
+			$(".word-color").css("color", "#c35838");
+			$("#bar2.word-color").css("background", "#c35838");
+		} else{
+			$(".word-color").css("color", "#c05838");
+			$("#bar2.word-color").css("background", "#c35838");
+		}
+	}
+
+
+	$(function(){
+		changeSpotColor();
+	});
+
+  adjustBar();
+
+  $(window).resize(adjustBar);
+  $(document).ready(adjustBar);
+
+</script>
+
+<body>
+<section class="banner">
+	<div class="profile-placeholder placeholder">
+		<div class="words word-color">
+			<strong class="first"><%= @user.neighborhood %><%= @user.neighborhood %></strong>
+			<strong class="second"><%= @user.neighborhood %><%= @user.neighborhood %></strong>
+			<strong class="thiird"><%= @user.neighborhood %><%= @user.neighborhood %></strong>
+
+		</div>
+		<div class="name-description two-thirds right">
+			<h1><%= @user.neighborhood %></h1>
+			<h2><%= @user.first_name %> <%= @user.last_name %></h2>
+			<p><%= @user.description %></p>
+		</div>
+	</div>
+</section>
+
+<main id="profile">
+
+<div class="third info left margin-right">
+	<section>
+		<h3>MakePGH Information</h3>
+
+	  <div id="barBackground2">
+	    <div id="bar2" class="word-color"></div>
+	  </div>
+
+		<p><%= @user.cause_percent %>% of <%= @user.first_name %>'s proceeds will be given toward <%= @user.cause %> in <%= @user.neighborhood %>.</p>
+	</section>
+
+	<section>
+		<h3>Contact Information</h3>
+		<table>
+			<tr>
+				<td>phone</td>
+				<td><%= @user.phone_number %></td>
+			</tr>
+			<tr>
+				<td>email</td>
+				<td><%= @user.email %></td>
+			</tr>
+		</table>
+	</section>
+</div>
+
+
+<% @user.items.each do |item| %>
+	<div class="third item margin-bottom margin-right left">
+		<%= image_tag(item.avatar_url(:topic_full), :class => "item-photo") if item.avatar? %>
+
+		<h2><%= truncate(item.title, :length => 23) %></h2>
+		 
+		<p><%= truncate(item.description, :length => 100) %><a href="#" class="read-more">read more</a></p>
+
+		<p>
+			<%= link_to 'Delete Item', [item.user, item],
+				:class => "delete",
+               method: :delete,
+               data: { confirm: 'Are you sure?' } %>
+      	</p>
+	</div>
+<% end %>
+
+<div class="third item left">
+	<div class="new-item-container">
+		<a href="#" class="button spot-color full-width new-item">Add a New Item</a>
+	</div>
+
+</div>
+
+<div class="clear"></div>
+</main>
+
+<%= render "layouts/header" %>
+
+<%= render "layouts/footer" %>
+
+<div class="overlay spot-color" id="item-overlay"></div>
+<div class="popover-container">
+	<div id="view-item" class="popover">
+		<h2>Add a New Item</h2>
+
+	<%= form_for ([@user, @user.items.build]) do |f| %>
+
+		<div class="third margin-right left">
+		    <%= f.file_field :avatar, :class => "item-photo" %>
+		    <%= f.hidden_field :avatar_cache %>
+		</div>
+
+	    <div class="two-thirds left">
+			<%= f.text_field :title, :placeholder => "Item name" %>
+			<%= f.text_area :description, :class => "description", :placeholder => "Item description" %>
+			<%= f.submit :class => "item-create button spot-color", :value => "Add New Item" %>
+		</div>
+		<div class="clear"></div>
+
+	<%end%>
+
+	<div class="close"></div>
+	</div>
+</div>
+
+</body>

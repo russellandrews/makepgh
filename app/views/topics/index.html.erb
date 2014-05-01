@@ -1,0 +1,108 @@
+
+
+
+
+<body>
+
+  <div class="overlay spot-color" id="topic-overlay"></div>
+
+  <div class="popover-container">
+
+    <div id="new-topic" class="popover">
+      <h2>New Discussion</h2>
+      
+      <%= form_for :topic, :url => topics_path do |f| %>
+
+        <div class="add-photo">
+            <%= f.file_field :avatar, :class => "add-topic-photo" %>
+            <%= f.hidden_field :avatar_cache %> 
+        </div>
+
+        <div class="title-body">
+            <%= f.text_field :title, :placeholder => "Topic Subject" %>
+       
+            <%= f.text_area :body, :placeholder => "Topic body" %>
+
+            <%= f.submit :class => "new-topic button spot-color" %>
+        </div>
+
+      <% end %>
+
+      <div class="close"></div>
+    </div>
+
+  </div>
+
+<main id="topics">
+
+
+  <div class="content-header">
+    <div class="search-stuff two-thirds">
+
+      <%= form_tag(topics_path, :method => "get", class: "navbar-form", id: "search-form") do %>
+        <div class="input-append">
+          <%= text_field_tag :search, params[:search], class: "search-bar", placeholder: "Search for a topic..." %>
+          <input type="submit" class="search-button button gray" value="Search"/>
+        </div>
+      <% end %>
+      <%= yield %>
+
+
+    </div>
+
+    <a class="button new-topic spot-color">New Topic</a>
+  </div>
+
+  <div class="topic-right">
+    <h2>All discussions by date</h2>
+    <ul>
+      <li><a class="active" href="#">2014<img class="more-arrow" src="/assets/arrow.png"/></a></li>
+      <li><a href="#">2013<img class="more-arrow" src="/assets/arrow.png"/></a></li>
+      <li><a href="#">2012<img class="more-arrow" src="/assets/arrow.png"/></a></li>
+      <li><a href="#">2011<img class="more-arrow" src="/assets/arrow.png"/></a></li>
+    </ul>
+  </div>
+
+  <div class="topic-left">
+    <% if @searchActive %>
+        <%= link_to 'Back to Topics', topics_path(@topic), :class => "back-to-topics button gray" %>
+      <% end %>
+    
+    <% @topics.each do |topic| %>
+
+      <div class="topic-container">
+        <div>
+          <%= image_tag(topic.avatar_url(:retina_thumb_topic), :class => "topic-thumb") if topic.avatar? %>
+          <div class="title-body">
+            <h2><%= link_to truncate(topic.title, :length => 36), topic_path(topic) %></h2>
+
+            <p>by <%= topic.user.first_name %> <%= topic.user.last_name %></p>
+
+            <p><%= truncate(topic.body, :length => 275) %></p>
+          </div>
+          <div class="clear"></div>
+        </div>
+        <div class="topic-footer">
+          <p class="italicized"><%= link_to topic.created_at.strftime("%B %d, %Y at %l:%M%p"), topic_path(topic) %></p>
+
+          <p class="edit-delete">
+            <%= link_to 'Edit', edit_topic_path(topic) %> | 
+            <%= link_to 'Delete', topic_path(topic),
+                          method: :delete, data: { confirm: 'Are you sure?' } %>
+          </p>
+        </div>
+      </div>
+
+    <% end %>
+    <div class="clear"></div>
+  </div>
+
+  <div class="clear"></div>
+
+</main>
+
+
+<%= render "layouts/header" %>
+
+<%= render "layouts/footer" %>
+</body>

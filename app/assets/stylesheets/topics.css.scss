@@ -1,0 +1,538 @@
+// Place all the styles related to the Topics controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+img.avatar {
+	width: 100%;
+	height: auto;
+}
+
+img.profile-photo{
+	width: 320px;
+	height: auto;
+}
+
+img.topic-photo{
+	width: 176px;
+	height: auto;
+}
+	
+
+.edit-topic.button{
+	float: right;
+	min-width: 128px;
+}
+
+div.search-stuff{
+	width: 65.17%;
+	display: inline-block;
+
+	input[type=text].search-bar{
+		display: inline-block;
+		margin: 0;
+		width: 74.5%;
+		max-width: 464px;
+		font-size: 14px;
+		line-height: 24px;
+		vertical-align: top;
+	}
+
+	input[type="submit"].search-button{
+		float: right;
+		width: 20%;
+		padding: 0;
+	}
+
+}
+
+a.button.new-topic{
+	display: inline-block;
+	float: right;
+	width: 28.57%;
+	max-width: 256px;
+	text-decoration: none;
+}
+
+div.topic-left{
+	width: 65.17%;
+	max-width: 584px;
+	display: inline-block;
+	float: left;
+
+	.back-to-topics{
+			margin-top: 32px;
+		}
+
+	div.topic-container{
+		box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		padding-top: 64px;
+		padding-bottom: 32px;
+		border-bottom: 1px solid #e0ddd7;
+		width: 100%;
+
+		img.topic-thumb{
+			width: 30%;
+			display: inline-block;
+			height: auto;
+			float: left;
+			margin-right: 5.4%;
+		}
+
+		div.title-body{
+			width: 63%;
+			display: inline-block;
+			float: left;
+			vertical-align: top;
+		}
+
+		div.topic-footer{
+			width: 100%;
+			margin-top: 16px;
+			position: relative;
+
+			p.italicized, p.edit-delete{
+				position: absolute;
+				line-height: 32px;
+			}
+			p.edit-delete{
+				right: 0;
+			}
+			p.italicized{
+				left: 0;
+			}
+		}
+
+		p{
+			margin-bottom: 8px;
+		}
+	}
+}
+
+div.topic-right{
+	width: 28.57%;
+	max-width: 256px;
+	display: inline-block;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	padding: 64px 0;
+	float: right;
+	vertical-align: top;
+	position: relative;
+
+	ul li{
+		position: relative;
+
+		a{
+			display: block;
+			line-height: 24px;
+			padding: 8px 0;
+			font-size: 14px;
+			border-bottom: 1px solid #e0ddd7;
+			text-decoration: none;
+			color: #666;
+		}
+
+		.more-arrow{
+			width: 12px;
+			height: auto;
+			position: absolute;
+			right:16px;
+			bottom: 16px;
+		}
+	}
+
+	.active{
+		font-weight: bold;
+	}
+}
+
+div#new-topic.popover{
+	padding: 32px 64px 64px 64px;
+	min-height: 320px;
+
+	h2{
+		text-align: center;
+		vertical-align: baseline;
+		padding-top: 24px;
+		padding-bottom: 32px;
+	}
+
+	.add-photo{
+		width: 27.5%;
+		height: 27.5%;
+		display: inline-block;
+		vertical-align: top;
+		margin-right: 5%;
+		position: relative;
+		background: #edeae4;
+
+		.add-topic-photo{
+			width: 100%;
+			height: 176px;	
+			display: inline-block;
+			background: #edeae4;
+		}
+	}
+
+	div.title-body{
+		width: 65.5%;
+		display: inline-block;
+
+		input#topic_title, textarea{
+			width: 100%;
+			max-width: none;
+			box-sizing: border-box;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			margin: 0;
+			font-size: 14px;
+			line-height: 24px;
+			font-family: 'Adobe Garamond Pro', GaramondReg, Georgia, sans-serif;
+			border: 0;
+			padding: 4px 8px;
+			outline: 0;
+			margin-bottom: 16px;
+		}
+
+		textarea{
+			height: 128px;
+			margin-bottom: 29px;
+		}
+
+		input.button{
+			float:right;
+		}
+	}
+}
+
+
+div.topic-info{
+	width: 100%;
+	font-size: 1.25em;
+
+	.topic-photo{
+		width: 28.57%;
+		margin-right: 7.14%;
+		display: inline-block;
+		float: left;
+
+		img{
+			width: 100%;
+			height: auto;
+		}
+	}
+
+	.topic-text{
+		width: 64.28%;
+		display: inline-block;
+		vertical-align: top;
+		float: left;
+
+		p{
+			margin-bottom: 8px;
+		}
+	}
+}
+
+
+div.bottom-half{
+	background: #edeae4;
+	
+	div.topic-comments{
+		position: relative;
+		max-width: 896px;
+		margin: 0 auto;
+
+		div.topic-comment-content{
+			width: 570px;
+			float: right;
+			padding: 64px 0;
+
+			.add-comment.button{
+				width: 100%;
+			}
+
+			div.comment-form{
+				background: #fff;
+				width: 100%;
+				max-width: 416px;
+				margin-top: 16px;
+				margin-bottom: 32px;
+
+				div.comment-form-body{
+					box-sizing: border-box;
+					-webkit-box-sizing: border-box;
+					-moz-box-sizing: border-box;
+					padding: 16px;
+				}
+
+				input[type="text"], textarea{
+					width: 100%;
+					box-sizing: border-box;
+					-webkit-box-sizing: border-box;
+					-moz-box-sizing: border-box;
+					max-width: none;
+					font-size: 14px;
+					line-height: 21px;
+					padding: 8px;
+					font-family: 'Adobe Garamond Pro', GaramondReg, Georgia, serif;
+				}
+
+				textarea{
+					min-height: 64px;
+				}
+			}
+
+			.comment{
+				width: 100%;
+				max-width: 416px;
+				background: #fff;
+				margin-bottom: 64px;
+
+				div.comment-header{
+
+					box-sizing: border-box;
+					-webkit-box-sizing: border-box;
+					-moz-box-sizing: border-box;
+					padding: 16px;
+
+					p.commenter{
+						float: left;
+					}
+
+					p.date{
+						float: right;
+					}
+				}
+
+				div.comment-body{
+					box-sizing: border-box;
+					-webkit-box-sizing: border-box;
+					-moz-box-sizing: border-box;
+					padding: 0 16px 16px 16px;
+				}
+
+				a.delete.button{
+					width: 100%;
+				}
+			}
+		}
+	}
+}
+
+
+main#edit-topic{
+	margin-top: 128px;
+
+	.photo{		
+		display: inline-block;
+		float: left;
+		margin-right: 64px;
+		width: 256px;
+		height: auto;
+		vertical-align: top;
+	}
+
+	.text{
+		display: inline-block;
+		float: left;
+		width: 576px;
+
+		input, textarea{
+			max-width: none;
+			width: 100%;
+			font-size: 18px;
+			line-height: 24px;
+		}
+
+		textarea{
+			height: 256px;
+		}
+
+	}
+
+	.submit.button{
+		width: auto;
+		float: right;
+	}
+
+	.edit-topic-footer{
+		margin: 64px 0;
+	}
+}
+
+@media screen and (max-width: 1024px){
+
+}
+
+@media screen and (max-width: 768px){
+	div.topic-right, div.topic-left{
+		width: 100%;
+		max-width: none;
+		padding: 32px 0;
+	}
+
+	div.topic-right{
+		padding-bottom: 0;
+	}
+
+	div.topic-left{
+		padding: 0;
+
+		div.topic-container{
+			padding-top: 32px 0;
+
+			img.topic-thumb, div.title-body{
+				width: 100%;
+			}
+
+			div.title-body{
+				margin-top: 16px;
+			}
+		}
+	}
+
+	div.content-header{
+
+		div.search-stuff{
+			width: 100%;
+			max-width: none;
+
+			div.search-button{
+				width: 20%;
+			}
+
+			input[type="text"].search-bar{
+				width: 74.5%;
+				max-width: none;
+			}
+		}
+
+		a.button.new-topic{
+			width: 100%;
+			max-width: none;
+			margin: 32px 0;
+		}
+	}
+
+	div#new-topic.popover{
+
+		padding: 16px;
+
+		margin-bottom: 32px;
+		height: auto;
+		min-height: none;
+		max-height: none;
+
+		.add-photo{
+			width: 100%;
+			margin-bottom: 16px;
+		}
+		div.title-body{
+			width: 100%;
+			textarea{
+				height: 64px;
+			}
+		}
+
+		input[type="submit"].new-topic.button{
+			width: 100%;
+		}
+	}
+
+	div.topic-info{
+		padding-top: 32px;
+
+		.topic-photo{
+			width: 100%;
+			margin-right: 0;
+			margin-bottom: 16px;
+		}
+
+		.topic-text{
+			width: 100%;
+		}
+	}
+
+	div.bottom-half{
+
+		div.topic-comments{
+
+			box-sizing: border-box;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			padding: 0 64px;
+
+			div.topic-comment-content{
+
+				width: 100%;
+
+				div.comment-form{
+					max-width: none;
+				}
+
+				.comment{
+					max-width: none;
+				}
+			}
+
+		}
+
+	}
+}
+
+@media screen and (max-width: 500px){
+	div.topic-right, div.topic-left, div.topic-top{
+		max-width: none;
+		padding: 16px 0;
+	}
+
+	div.topic-right{
+		padding-bottom: 0;
+		width: 100%;
+	}
+
+	div.topic-left{
+		padding: 0;
+
+		div.topic-container{
+			padding-top: 16px 0;
+
+			img.topic-thumb, div.title-body{
+				width: 100%;
+			}
+
+			div.title-body{
+				margin-top: 16px;
+			}
+		}
+	}
+
+	div.content-header{
+		padding-top: 0px;
+
+		div.search-stuff, a.button.new-topic{
+			max-width: none;
+
+			div.search-button{
+				padding: 0;
+			}
+		}
+
+		a.button.new-topic{
+			margin: 16px 0;
+		}
+	}
+
+	div.bottom-half{
+
+		div.topic-comments{
+			padding: 0 16px;
+		}
+
+	}
+}

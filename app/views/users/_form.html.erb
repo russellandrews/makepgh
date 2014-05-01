@@ -1,0 +1,50 @@
+
+<%= form_for @user do |f| %>
+
+  <% if @user.errors.any? %>
+  <div id="error_explanation">
+    <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  
+  <p class="field">
+    <%= f.label :username %><br>
+    <%= f.text_field :username, :placeholder => "Username" %>
+  </p>
+
+  <p>
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name, :placeholder => "First Name" %>
+  </p>
+
+  <p>
+    <%= f.label :last_name %><br>
+    <%= f.text_field :last_name, :placeholder => "Last Name" %>
+  </p>
+ 
+  <p>
+    <%= f.label :email %><br>
+    <%= f.text_field :email, :placeholder => "@email" %>
+  </p>
+
+  <p class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password, :placeholder => "Password" %>
+  </p>
+  <p class="field">
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, :placeholder => "Re-enter Password" %>
+  </p>
+
+  <p>
+    <%= f.submit :class => "button spot-color", :value => "Sign Up" %>
+  </p>
+
+  <div class="clear"></div>
+
+<% end %>

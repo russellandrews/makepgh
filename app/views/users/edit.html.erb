@@ -1,0 +1,149 @@
+<script type="text/javascript">
+  function adjustBar(){
+      var causePercent = Number("<%= @user.cause_percent %>");
+      var backgroundWidth2 = $("#barBackground2").width();
+
+      var backgroundWidth = $("#barBackground").width();
+
+      var barWidth2 = causePercent*backgroundWidth2/100;
+
+      var barWidth = causePercent*backgroundWidth/100;
+
+      $("#bar2").width(barWidth2);
+
+      $("#bar").width(barWidth);
+
+      $("input#slide").value = causePercent;
+
+  }
+
+  adjustBar();
+
+
+  $(window).resize(adjustBar);
+  $(document).ready(adjustBar);
+
+</script>
+
+
+<body>
+
+
+<main>
+
+<section class="user-form">
+<%= form_for @user do |f| %>
+
+  <% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@user.errors.count, "user") %> prohibited
+      this article from being saved:</h2>
+    <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <div class="content-header">
+    <%= link_to 'Cancel', user_path, :class => "back button gray" %>
+    <%= f.submit :class => "save-user button spot-color", :onclick => 'changeSpotColor();' %>
+  </div>
+
+  <div class="third margin-right left">
+
+    <p class="field">
+      <%= f.label :username %><br>
+      <%= f.text_field :username, :placeholder => "username" %>
+    </p>
+
+    <p>
+      <%= f.label :email %><br>
+      <%= f.text_field :email, :placeholder => "@"%>
+    </p>
+
+    <p>
+      <%= f.label :phone_number %><br>
+      <%= f.text_field :phone_number, :maxlength => 10, :placeholder => "XXXXXXXXX" %>
+    </p>
+    <div class="clear"></div>
+  </div>
+
+  <div class="two-thirds left">
+    <div class="full-width">
+
+      <p class="half margin-right">
+        <%= f.label :first_name %><br>
+        <%= f.text_field :first_name, :placeholder => "First name" %>
+      </p>
+
+      <p class="half">
+        <%= f.label :last_name %><br>
+        <%= f.text_field :last_name, :placeholder => "Last name" %>
+      </p>
+      <p class="full-width">
+        <%= f.label :description %><br>
+        <%= f.text_area :description, :maxlength => 360, :placeholder => "Say something about yourself and what you make." %>
+      </p>
+
+      <p class="half margin-right">
+        <%= f.label :neighborhood %><br>
+        <%= f.select :neighborhood, [['Lawrenceville','Lawrenceville'],['Oakland','Oakland'],['Downtown','Downtown'], ['Southside', 'Southside'], ['Shadyside', 'Shadyside'], ['Homewood', 'Homewood'], ['Hazelwood', 'Hazelwood'], ['The Hill', 'The Hill'], ['Squirrel Hill', 'Squirrel Hill'], ['East Liberty', 'East Liberty'], ['Friendship','Friendship'], ['Garfield','Garfield'], ['Bloomfield','Bloomfield']], {:include_blank => "Select a neighborhood"} %>
+      </p>
+
+      <p class="half">
+        <%= f.label :cause %><br>
+        <%= f.select :cause, [['Funding MakePGH','funding MakePGH'], ['Fixing potholes', 'fixing potholes'], ['Painting storefronts', 'painting storefronts'], ['Demolishing vacant buildings', 'demolishing vacant buildings'], ['Planting community gardens', 'planting community gardens'], ['Starting a soccer camp','starting a soccer camp'], ['Installing outdoor lighting','installing outdoor lighting']] %>
+      </p>
+
+      <p>
+        <%= f.label :cause_percent %><br>
+        <div id="slider">
+        
+          <div class="values">
+            <p class="left">0%</p>
+            <p class="right">100%</p>
+            <div class="clear"></div>
+          </div>
+        <%= f.range_field :cause_percent,
+                              :id => "slide",
+                              :min => 0,
+                              :max => 100,
+                              :step => 5,
+                              :value => @user.cause_percent,
+                              :onchange => "updateSlider(this.value)" %>
+        </div>
+
+        <div id="chosen"><%= @user.cause_percent %>%</div>
+
+        <div id="barBackground">
+          <div id="bar" class="spot-color"></div>
+        </div>
+      
+      </p>
+
+
+      <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  </div>
+  <div class="clear"></div>
+</div>
+<div class="third right margin-top"><%= f.submit :class => "button spot-color full-width", :onclick => 'changeSpotColor();' %></div>
+  <div class="clear"></div>
+
+<% end %>
+
+</section>
+
+</main>
+
+
+<%= render "layouts/header" %>
+
+<%= render "layouts/footer" %>
+
+
+</body>

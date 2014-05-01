@@ -1,0 +1,115 @@
+// Place all the styles related to the welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body,html{
+	font-family: 'Adobe Garamond Pro', GaramondReg, Georgia, serif;
+	background: #fff;
+	width: 100%;
+	height: 100%;
+	color: #666666;
+	-webkit-font-smoothing: antialiased;
+	-moz-font-smoothing: antialiased;
+	font-smoothing: antialiased;
+}
+
+
+body{
+
+	main#home{
+		margin-top: 7.14%;
+
+		section{
+			padding-bottom: 64px;
+		}
+	}
+
+	.placeholder{
+		width: 100%;
+		height: 15%;
+		background-color: #e1a625;
+		background-image: url('/assets/banner.jpg');
+		background-position: 22px center;
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+}
+
+@media screen and (max-width: 1024px){
+	body{
+		.placeholder{
+			background-position: -108px center;
+		}
+	}
+}
+
+@media screen and (max-width: 768px){
+
+	
+
+	.popover h2, .popover p{
+		font-size: 0.75em;
+	}
+
+	.half{
+		width: 100%;
+		padding:0;
+	}
+
+	form{
+		margin-top: 64px;
+		width: 100%;
+	}
+
+	body{
+		.placeholder{
+			background-position: -115px center;
+		}
+	}
+}
+
+@media screen and (max-width: 500px){
+	.popover h2, .popover p{
+		font-size: 1em;
+	}
+
+	body{
+		main#home{
+			section{
+				padding-bottom: 32px;
+			}
+		}
+
+		.placeholder{
+			background-position: -95px center;
+		}
+	}
+
+	header img{
+		-ms-transform: scale(0.75,0.75); /* IE 9 */
+		-webkit-transform: scale(0.75,0.75); /* Chrome, Safari, Opera */
+		transform: scale(0.75,0.75);
+	}
+
+	.half{
+		width: 100%;
+		padding:0;
+	}
+	
+	form{
+		margin-top: 16px;
+		width: 100%;
+	}
+
+	div.button.ok{
+		bottom: 32px;
+	}
+}
+
+@media screen and (max-width: 320px){
+	body{
+		.placeholder{
+			background-position: -68px center;
+		}
+	}
+}

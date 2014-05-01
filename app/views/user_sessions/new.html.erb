@@ -1,0 +1,38 @@
+<body>
+
+<main>
+
+<%= form_for(@user_session) do |f| %>
+  <% if @user_session.errors.any? %>
+    <div id="error_explanation">
+
+      <ul>
+      <% @user_session.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="third centered">
+    <div class="field">
+      <%= f.label :username %><br>
+      <%= f.text_field :username, :placeholder => "Username" %>
+    </div>
+    <div class="field">
+      <%= f.label :password %><br>
+      <%= f.password_field :password, :placeholder => "Password" %>
+    </div>
+    <%= f.submit :value => "Login", :class => "button right full-width spot-color"%>
+  </div>
+
+  <div class="clear"></div>
+<% end %>
+
+</main>
+
+<%= render "layouts/header" %>
+
+<%= render "layouts/footer" %>
+
+</body>

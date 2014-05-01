@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MakePGH</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" 
+      type="image/png" 
+      href="/assets/favicon.ico">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+
+
+<script type="text/javascript">
+
+  function updateSlider(slideAmount) {
+
+		var display = document.getElementById("chosen");
+
+		display.innerHTML=slideAmount+"%";
+
+		var bar = document.getElementById("bar");
+
+		bar.style.width=slideAmount+"%";
+
+		var bar2 = document.getElementById("bar2");
+
+		bar2.style.width=slideAmount+"%";
+
+  }
+
+  	$(function(){
+
+
+
+	    function centerOverlay(){
+	    	var T = $(window).scrollTop();
+	    	var B = $(window).scrollTop() + $(window).height();
+
+	    	$(".menu-overlay, .overlay, .menu-popover-container, .popover-container").css({
+	    		top: T,
+	    		bottom: B
+	    	});
+	    }
+
+
+		function showMenu(){
+			$(".menu-overlay, .menu-popover-container").show("fade", 300);
+			$(".menu-popover").delay(300).show("slide", {direction: "down"}, 300);
+			$("html").css("overflow", "hidden");
+
+			centerOverlay();
+		}
+
+		function hideMenu(){
+			$(".menu-overlay, .menu-popover-container").delay(300).hide("fade", 300);
+			$(".menu-popover").hide("slide", {direction: "down"}, 300);
+			$("html").css("overflow", "scroll");
+		}
+
+		// $(".signup").click(function(){
+		// 	showPopUp();
+
+		// });
+
+		$("a.logout").click(function(e){
+			e.preventDefault();
+			showMenu();
+		});
+
+
+		
+
+		function showPopUp(){
+			$(".overlay, .popover-container").show("fade", 300);
+			$(".popover").delay(300).show("slide", {direction: "down"}, 300);
+			$("html").css("overflow", "hidden");
+
+			centerOverlay();
+		}
+
+		function hidePopup(){
+			$(".overlay, .popover-container").delay(300).hide("fade", 300);
+			$(".popover").hide("slide", {direction: "down"}, 300);
+			$("html").css("overflow", "scroll");
+		}
+
+		$("a.read-more, a.new-topic, a.new-item").click(function(e){
+			e.preventDefault();
+			showPopUp();
+		});
+
+		$(".overlay, div.close, div.button.ok, .menu-overlay, .menu-popover nav ul li a").click(function(){
+			hideMenu();
+			hidePopup();
+		});
+
+		function sizeBanner(){
+			var windowWidth = $(window).width();
+
+			if (windowWidth > 1024){
+				$(".home.placeholder").css("height", windowWidth*0.3);
+			} else if(windowWidth > 768 && windowWidth <= 1024){
+				$(".home.placeholder").css("height", windowWidth*0.4);
+			} else if(windowWidth > 500 && windowWidth <= 768){
+				$(".home.placeholder").css("height", windowWidth*0.5);
+			} else{
+				$(".home.placeholder").css("height", windowWidth*0.6);
+			}		
+
+		}
+
+
+		sizeBanner();
+
+		$(window).scroll(centerOverlay);
+		$(window).resize(centerOverlay);
+
+		$(window).resize(sizeBanner);
+
+
+	});
+
+
+</script>
+
+</head>
+<body>
+
+<%= yield %>
+
+</body>
+</html>

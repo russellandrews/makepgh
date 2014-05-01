@@ -1,0 +1,38 @@
+
+<body>
+
+<main id="edit-topic">
+
+<%= form_for @topic do |f| %>
+
+  <div class="content-header">
+    <%= link_to 'Cancel', topic_path, :class => "cancel-edit button gray" %>
+    <%= f.submit :class => "submit button spot-color" %>
+  </div>
+  
+  <div class="photo">
+    <%= image_tag(@topic.avatar_url(:topic_full), :class => "photo") if @topic.avatar? %>
+  <label>New Topic Photo</label>
+    <%= f.file_field :avatar, :class => "add-topic-photo" %>
+    <%= f.hidden_field :avatar_cache %>
+  </div> 
+
+  <div class="text">
+
+    <p><%= f.text_field :title %></p>
+ 
+    <p><%= f.text_area :body %></p>
+
+  </div>
+  <div class="clear"></div>
+
+
+<% end %>
+
+</main>
+
+<%= render "layouts/header" %>
+
+<%= render "layouts/footer" %>
+
+</body>

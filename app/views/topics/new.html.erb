@@ -1,0 +1,44 @@
+
+
+<body>
+<main id="new-topic">
+  <h1>New Topic</h1>
+
+  <%= form_for :topic, :url => topics_path do |f| %>
+
+    <label>Add a Photo</label>
+    <%= f.file_field :avatar %>
+    <%= f.hidden_field :avatar_cache %> 
+
+    <p>
+      <%= f.label :title %><br>
+      <%= f.text_field :title %>
+    </p>
+   
+    <p>
+      <%= f.label :body %><br>
+      <%= f.text_area :body %>
+    </p>
+
+    <p>
+      <%= f.submit :class => "button spot-color" %>
+    </p>
+
+    <p>
+    <%= link_to 'Cancel', topics_path %>
+  </p>
+
+  <% end %>
+
+</main>
+
+<header>
+  <nav>
+    <%= link_to 'See the users', users_path, :class => "logout" %><br>
+    <a href="../" id="logo"><img src="/assets/logo.png"/></a>
+    <%= link_to 'See the discussion', topics_path, :class => "menu" %>
+  </nav>
+</header>
+
+<footer></footer>
+</body>

@@ -1,0 +1,58 @@
+<body>
+
+	<div class="overlay spot-color" id="signup-overlay"></div>
+	<div id="signup" class="popover">
+		<h2>Thank you for registering!</h2>
+		<p>You will receive an email shortly about attending an information session about MakePGH at your local community center.</p>
+		<div class="button ok">OK</div>
+	</div>
+
+	<section class="banner">
+		<div class="home placeholder"></div>
+	</section>
+
+<main id="home">
+
+	<section>
+		<div class="two-thirds margin-right margin-bottom">
+			<h2>Empowerment through making and selling</h2>
+			<p>MakePGH helps community makers sell hand made products. From bowls to bread, picture frames to earrings, we can jumpstart your business or supplement your existing business.</p>
+		</div>
+		<div class="third right">
+			<%= form_for :user, :url => :residents do |f| %>
+    			<%= f.text_field :username, :placeholder => "Username" %>
+    			<%= f.text_field :email, :placeholder => "@email" %>
+
+			    <%= f.password_field :password, :placeholder => "Password" %>
+
+			    <%= f.password_field :password_confirmation, :placeholder => "Re-enter Password" %>
+
+				<%= f.submit 'Sign up', :class => "signup button spot-color full-width" %>
+				<div class="clear"></div>
+			<% end %>
+		</div>	
+		<div class="clear"></div>
+	</section>
+
+	<section>
+		<div class="third left margin-right">
+			<h2>We support local community ventures</h2>
+			<p>With our starter kit, you have the tools to help sell the items you make.  Using our finance planner, calculate how long it will take for you to reach your goal.  We also provide you with supplies for packaging your product.</p>
+		</div>
+		<div class="third left margin-right">
+			<h2>Strengthening community bonds</h2>
+			<p>Our goal is to cement community ties by creating an identity around the things we make.  everything sold through MakePGH is a reflection of the people in the community.  by enabling a better flow of community made objects, transactions can strengthen bonds between merchants (your neighbors) and buyers (your neighbors). </p>
+		</div>
+		<div class="third left">
+			<h2>How to get started</h2>
+			<p>Log on to www.makepgh.org to sign up or head to your local community center, library, to sign up in person.  you can also sign up during our MakePGH event every two months which displays work from our vendors.</p>
+		</div>
+		<div class="clear"></div>
+	</section>
+</main>
+
+<%= render "layouts/header" %>
+
+<%= render "layouts/footer" %>
+
+</body>

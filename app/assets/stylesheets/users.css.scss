@@ -1,0 +1,380 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body{
+
+	section.banner{
+		background: #e0ae27;
+		padding-bottom: 0;
+
+		.profile-placeholder.placeholder{
+			position: relative;
+			width: 100%;
+			max-width: 896px;
+			height: 384px;
+			background: none;
+			margin: 0 auto;
+			overflow: hidden;
+
+			.words{
+				position: absolute;
+				color: #c7563c;
+				left: 0;
+				transform:rotate(90deg);
+				-webkit-transform:rotate(90deg);
+				-moz-transform:rotate(90deg);
+				transform-origin: 13.2% 40%;
+				-webkit-transform-origin: 13.2% 40%;
+				-moz-transform-origin: 13.2% 40%;
+				width: 1280px;
+
+				strong{
+					font-size: 92px;
+					line-height: 64px;
+					padding-top: 32px;
+					display: block;
+					font-family: GothamBold;
+					float: left;
+					text-transform: uppercase;
+				}
+
+				strong.first{
+					margin-left: 88px;
+				}
+
+				strong.second{
+					margin-left: -372px;
+				}
+
+				strong.thiird{
+					margin-left: -52px;
+				}
+			}
+
+			.name-description{
+				position: absolute;
+				bottom: 0;
+				right: 0;
+				color: #1c2e3d;
+				width: 64.28%;
+				margin-left: 320px;
+				margin-bottom: 7.14%;
+
+				h1{
+					font-size: 46px;
+					font-family: GothamBold;
+					text-transform: uppercase;
+					color: #fff;
+				}
+
+				h2{
+					font-family: 'Adobe Garamond Pro', GaramondReg, Georgia, serif;
+					text-transform: none;
+					font-size: 1.5em;
+					font-weight: bold;
+					padding-bottom: 4px;
+					margin-top: 24px;
+				}
+
+				p{
+					margin: 0 auto;
+				}
+			}
+
+			.name-description-background{
+				opacity: 0.75;
+				border: 0;
+			}
+		}
+	}
+
+	main{
+		.third{
+			position: relative;
+
+			section{
+				border-top: 1px solid #666;
+				box-sizing: border-box;
+				-webkit-box-sizing: border-box;
+				-moz-box-sizing: border-box;
+				padding: 32px 0;
+				margin-bottom: 32px;
+
+				h3{
+					font-family: GothamBold, sans-serif;
+					text-transform: uppercase;
+					font-size: 12px;
+					margin-bottom: 8px;
+				}
+
+				table{
+					tr{
+						margin: 8px 0;
+						display: inline-block;
+						width: 100%;
+
+						td{
+							display: inline-block;
+						}
+
+						td:nth-child(2n-1){
+							min-width: 64px;
+							margin-right: 8px;
+						}
+					}
+				}
+			}
+
+			section:nth-child(2n){
+				margin-bottom: 0 !important;
+			}
+
+			img.item-photo{
+				width: 100%;
+				height: auto;
+			}
+
+			h2{
+				padding-bottom: 4px ;
+			}
+
+			.new-item-container{
+				width: 100%;
+				height: 100%;
+
+				.new-item{
+					margin-top: 43.75%;
+				}
+			}
+
+		}
+
+		section.user-form{
+			textarea{
+				height: 64px;
+				max-width: none;
+			}
+
+			.photo{
+				width: 100%;
+				height: 256px;
+				margin-bottom: 16px;
+				background: #edeae4;
+				magrgin-left: 0 !important;
+				display: inline-block;
+			}
+
+			.save-user.button{
+				float: right;
+				width: auto !important;
+			}
+
+			#barBackground, #barbackground2{
+				margin-top: 16px !important;
+			}
+
+			.edit-user-footer{
+				margin-bottom: 64px;
+			}
+		}
+
+		.item-photo{
+			width: 100%;
+			height: 128px;
+			background: #edeae4;
+			margin-bottom: 8px;
+
+		}
+
+		textarea {
+			height: 64px;
+		}
+
+		input#item_title{
+			margin-bottom: 8px;
+		}
+
+		.item-create.button{
+			width: 100%;
+		}
+
+		a.delete{
+			float: right;
+		}
+
+	}
+
+	main#profile{
+		margin-top: 64px;
+
+		.third:nth-child(3n+3){
+			margin-right: 0;
+		}
+
+	}
+
+	main#users{
+	
+		.third.form{
+			margin-left: 0;
+		}
+		.two-thirds{
+
+			.half{
+				width: 100%;
+				float: left;
+				margin-bottom: 7.14%;
+			}
+
+			.half:nth-child(6n-6){
+				margin-right: 0;
+			}
+		}
+	}
+
+	#barBackground, #barBackground2{
+		background: #edeae4;
+		height: 32px;
+		margin: 16px 0;
+
+		#bar, #bar2{
+			height: 32px;
+			transition: width 500ms;
+			-webkit-transition: width 500ms;
+			-moz-transition: width 500ms;
+		}
+
+		#bar, #bar2{
+			width: 0;
+		}
+
+	}
+
+		input[type='range'] {
+			-webkit-appearance: none;
+			padding-left:2px; padding-right:2px;
+			-webkit-border-radius: 0px;
+			background: #edeae4;
+			width: 100%;
+			box-sizing:border-box;
+			-webkit-box-sizing:border-box;
+			-moz-box-sizing:border-box;
+		}
+
+		input[type='range']:focus {
+			outline: 0;
+		}
+
+		.values{
+			margin-top: 4px;
+			.left, .right{
+				font-family: GothamBold;
+				font-size: 12px;
+			}
+		}
+
+		#chosen{
+			text-align: center;
+			margin-top: 8px;
+		}
+}
+
+
+@media screen and (max-width: 1024px){
+	body{
+		section.banner{
+			.profile-placeholder.placeholder{
+				padding: 0 7.14%;
+				box-sizing: border-box;
+				-moz-box-sizing: border-box;
+
+				.name-description{
+					right: 7.14%;
+					width: 56.05%;
+				
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 768px){
+	body{
+
+		section.banner{
+			.profile-placeholder.placeholder{
+				.name-description{
+					font-size: 0.875em;
+					margin-left: 192px;
+					padding-left: 14.28%;
+					width: 70.83%;
+
+					h1{
+						font-size: 2em;
+					}
+
+					h2{
+						margin-top: 16px;
+					}
+				}
+
+				.words{
+					left: -96px;
+				}
+			}
+		}
+
+
+		main{
+			.third{
+				.new-item-container{
+					width: 100%;
+					height: 100%;
+
+					.new-item{
+						margin-top: 20%;
+					}
+				}
+			}
+		}
+
+		main#users{
+			.full-width{
+
+				.half{
+					width: 45%;
+					float: left;
+					margin-right: 5%;
+					margin-bottom: 5.55%;
+				}
+
+				.half:nth-child(6n-6){
+					margin-right: 0;
+				}
+				.half:nth-child(2n){
+					margin-right: 0;
+				}
+			}
+		}
+	}
+
+
+}
+
+@media screen and (max-width: 500px){
+	body{
+		section.banner{
+			.profile-placeholder.placeholder{
+				.name-description{
+					width: 74%;
+					padding-left: 7.14%;
+
+				}
+				.words{
+						left: -192px;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,88 @@
+
+<body>
+
+<main id="topic">
+
+<div class="content-header">
+	<%= link_to 'Back to Topics', topics_path, :class => "button gray" %>
+
+	<%= link_to 'Edit this post', edit_topic_path(@topic), :class => "edit-topic button gray" %>
+</div>
+
+<div class="topic-info">
+	<div class="topic-photo">
+		<%= image_tag(@topic.avatar_url(:topic_full)) if @topic.avatar? %>
+	</div>
+
+	<div class="topic-text">
+		<h2><%= @topic.title %></h2>
+
+		<p class="italicized"><%= @topic.created_at.strftime("%B %d, %Y at %l:%M%p") %><p>
+
+		<p>by <%= @topic.user.first_name %> <%= @topic.user.last_name %></p>
+
+		 
+		<p><%= @topic.body %></p>
+	</div>
+	<div class="clear"></div>
+</div>
+
+</main>
+
+<div class="bottom-half">
+<div class="topic-comments">
+
+	<div class="topic-comment-content">
+
+		<h2>Comments</h2>
+
+		<div class="comment-form">
+			<%= form_for([@topic, @topic.comments.build]) do |f| %>
+			<div class="comment-form-body">
+				<p>
+					<%= f.text_field :commenter, :placeholder => "Your name" %>
+				</p>
+				<p>
+					<%= f.text_area :body, :placeholder => "Type your comment here" %>
+				</p>
+
+			</div>
+				<p>
+					<%= f.submit :class => "add-comment button spot-color", :value => "Add a Comment" %>
+				</p>
+			<% end %>
+		</div>
+
+
+
+
+		<% @topic.newest_comments.each do |comment| %>
+			<div class="comment">
+
+				<div class="comment-header">
+					<p class="commenter"><%= comment.commenter%></p>
+					<p class="italicized date"><%= comment.created_at.try(:strftime, "%B %d, %Y at %l:%M%p") %></p>
+					<div class="clear"></div>
+				</div>
+				<div class="comment-body">
+					<p><%= comment.body %></p>
+				</div>
+				<%= link_to 'Delete Comment', [comment.topic, comment],
+									:class => "delete button gray",
+					               method: :delete,
+					               data: { confirm: 'Are you sure?' } %>
+			</div>
+
+		<% end %>
+
+	</div>
+	<div class="clear"></div>
+</div>
+</div>
+
+<%= render "layouts/header" %>
+
+<%= render "layouts/footer" %>
+
+
+</body>
