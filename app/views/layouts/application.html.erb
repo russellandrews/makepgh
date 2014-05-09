@@ -13,6 +13,12 @@
 
 <script type="text/javascript">
 
+	function isTouchDevice() {
+	   var el = document.createElement('div');
+	   el.setAttribute('ongesturestart', 'return;'); // or try "ontouchstart"
+	   return typeof el.ongesturestart === "function";
+	}
+
   function updateSlider(slideAmount) {
 
 		var display = document.getElementById("chosen");
@@ -63,11 +69,6 @@
 
 		// });
 
-		$("a.logout").click(function(e){
-			e.preventDefault();
-			showMenu();
-		});
-
 
 		
 
@@ -85,15 +86,40 @@
 			$("html").css("overflow", "scroll");
 		}
 
-		$("a.read-more, a.new-topic, a.new-item").click(function(e){
-			e.preventDefault();
-			showPopUp();
-		});
+		if (isTouchDevice) {
+			$("a.read-more, a.new-topic, a.new-item").on("touchend", function(e){
+				e.preventDefault();
+				showPopUp();
+			});
 
-		$(".overlay, div.close, div.button.ok, .menu-overlay, .menu-popover nav ul li a").click(function(){
-			hideMenu();
-			hidePopup();
-		});
+			$(".overlay, div.close, div.button.ok, .menu-overlay, .menu-popover nav ul li a").on("touchend", function(){
+				hideMenu();
+				hidePopup();
+			});
+
+			$("a.logout").on("touchend", function(e){
+				e.preventDefault();
+				showMenu();
+			});
+
+		} else {
+
+			$("a.read-more, a.new-topic, a.new-item").click(function(e){
+				e.preventDefault();
+				showPopUp();
+			});
+
+			$(".overlay, div.close, div.button.ok, .menu-overlay, .menu-popover nav ul li a").click(function(){
+				hideMenu();
+				hidePopup();
+			});
+
+			$("a.logout").click(function(e){
+				e.preventDefault();
+				showMenu();
+			});
+
+		}
 
 		function sizeBanner(){
 			var windowWidth = $(window).width();
