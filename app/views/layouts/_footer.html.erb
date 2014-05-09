@@ -4,17 +4,17 @@
 		<div class="third left margin-right">
 			<h3>Account and Profile</h3>
 			<ul>
-				<li><a href="#">View Profile</a></li>
-				<li><a href="#">Edit Profile</a></li>
-				<li><a href="#">Logout</a></li>
+				<li><%= link_to 'View Profile', user_path(current_user.username) %></li>
+				<li><%= link_to 'Edit Profile', edit_user_path(current_user.username) %></li>
+				<li><%= link_to "Logout", :logout%></li>
 			</ul>
 		</div>
 
 		<div class="third left margin-right">
 			<h3>Discussion</h3>
 			<ul>
-				<li><a href="#">View Topics</a></li>
-				<li><a href="#">Find Other Residents</a></li>
+				<li><%= link_to 'View Topics', topics_path %></li>
+				<li><%= link_to 'Find Residents', :residents %></li>
 			</ul>
 		</div>
 
