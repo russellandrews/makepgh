@@ -1,5 +1,26 @@
 development:
+  adapter: sqlite3
+  database: db/development.sqlite3
+  pool: 5
+  timeout: 5000
+  username: 
+  password:
+
+test: &TEST
+  adapter: sqlite3
+  database: db/development.sqlite3
+  pool: 5
+  timeout: 5000
+  username: 
+  password:
+
+production:
   adapter: postgresql
-  host: localhost
-  username: user
-  database: app-dev
+  encoding: utf8
+  database: project_production
+  pool: 5
+  username: 
+  password:
+
+cucumber:
+  <<: *TEST
