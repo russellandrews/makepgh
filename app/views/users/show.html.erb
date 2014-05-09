@@ -130,7 +130,7 @@
 
 		<h2><%= truncate(item.title, :length => 23) %></h2>
 		 
-		<p><%= truncate(item.description, :length => 100) %><a href="#" class="read-more">read more</a></p>
+		<p><%= truncate(item.description, :length => 100) %></p>
 
 		<p>
 			<%= link_to 'Delete Item', [item.user, item],
