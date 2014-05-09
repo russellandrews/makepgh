@@ -1,3 +1,5 @@
+$cat config\database.yml
+
 development:
   adapter: postgresql
   host: localhost
