@@ -13,11 +13,7 @@
 
 <script type="text/javascript">
 
-	function isTouchDevice() {
-	   var el = document.createElement('div');
-	   el.setAttribute('ongesturestart', 'return;'); // or try "ontouchstart"
-	   return typeof el.ongesturestart === "function";
-	}
+	var is_touch_device = 'ontouchstart' in document.documentElement;
 
   function updateSlider(slideAmount) {
 
@@ -64,14 +60,6 @@
 			$("html").css("overflow", "scroll");
 		}
 
-		// $(".signup").click(function(){
-		// 	showPopUp();
-
-		// });
-
-
-		
-
 		function showPopUp(){
 			$(".overlay, .popover-container").show("fade", 300);
 			$(".popover").delay(300).show("slide", {direction: "down"}, 300);
@@ -86,7 +74,7 @@
 			$("html").css("overflow", "scroll");
 		}
 
-		if (isTouchDevice) {
+		if (is_touch_device) {
 			$("a.read-more, a.new-topic, a.new-item").on("touchend", function(e){
 				e.preventDefault();
 				showPopUp();
