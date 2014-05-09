@@ -24,10 +24,10 @@ body{
 				transform:rotate(90deg);
 				-webkit-transform:rotate(90deg);
 				-moz-transform:rotate(90deg);
-				transform-origin: 13.2% 40%;
+				transform-origin: 10.2% 30%;
 				-webkit-transform-origin: 13.2% 40%;
 				-moz-transform-origin: 13.2% 40%;
-				width: 1280px;
+				width: 1800px;
 
 				strong{
 					font-size: 92px;
@@ -35,20 +35,23 @@ body{
 					padding-top: 32px;
 					display: block;
 					font-family: GothamBold;
-					float: left;
+					position: absolute;
 					text-transform: uppercase;
 				}
 
 				strong.first{
-					margin-left: 88px;
+					left: -128px;
+					bottom: -213px;
 				}
 
 				strong.second{
-					margin-left: -372px;
+					left: 64px;
+					bottom: -117px;
 				}
 
 				strong.thiird{
-					margin-left: -52px;
+					left: 256px;
+					bottom: -21px;
 				}
 			}
 
