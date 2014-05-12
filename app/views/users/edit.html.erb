@@ -132,6 +132,10 @@
   <div class="clear"></div>
 </div>
 <div class="third right margin-top"><%= f.submit :class => "button spot-color full-width", :onclick => 'changeSpotColor();' %></div>
+<div class="third left margin-top">
+<%= link_to 'Delete Account', user_path(@user),
+                          method: :delete, data: { confirm: 'Are you sure?' }, :class => "button full-width gray" %>
+</div>
   <div class="clear"></div>
 
 <% end %>
