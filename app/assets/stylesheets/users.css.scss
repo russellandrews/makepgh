@@ -17,6 +17,12 @@ body{
 			margin: 0 auto;
 			overflow: hidden;
 
+			a.edit-profile{
+				position: absolute;
+				top: 128px;
+				right: 0px;
+			}
+
 			.words{
 				position: absolute;
 				color: #c7563c;

@@ -92,6 +92,12 @@
 			<h2><%= @user.first_name %> <%= @user.last_name %></h2>
 			<p><%= @user.description %></p>
 		</div>
+
+		<% if @user === current_user %>
+		<%= link_to 'Edit Profile', edit_user_path(current_user.username), :class => "button edit-profile spot-color" %>
+		<% else %>
+
+		<% end %>
 	</div>
 </section>
 

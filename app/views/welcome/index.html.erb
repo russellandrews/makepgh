@@ -18,6 +18,9 @@
 			<h2>Empowerment through making and selling</h2>
 			<p>MakePGH helps community makers sell hand made products. From bowls to bread, picture frames to earrings, we can jumpstart your business or supplement your existing business.</p>
 		</div>
+		<% if current_user %>
+		<% else %>
+
 		<div class="third right">
 			<%= form_for :user, :url => :residents do |f| %>
     			<%= f.text_field :username, :placeholder => "Username" %>
@@ -27,10 +30,13 @@
 
 			    <%= f.password_field :password_confirmation, :placeholder => "Re-enter Password" %>
 
-				<%= f.submit 'Sign up', :class => "signup button spot-color full-width" %>
+				<%= f.submit 'Sign up', :class => "signup button spot-color full-width" %><br>
+				<p style="margin-top: 16px; text-align: center;"><%= link_to "Or click here to log in", :login %></p>
 				<div class="clear"></div>
 			<% end %>
 		</div>	
+
+		<% end %>
 		<div class="clear"></div>
 	</section>
 
